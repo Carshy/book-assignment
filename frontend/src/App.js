@@ -1,29 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Provider } from 'react-redux';
+// import {
+//   About,
+//   Footer,
+//   Home,
+//   Projects,
+//   Testimonials,
+// } from './containers';
+import { Navbar } from './components';
+// import store from './redux/configureStore';
+// import { pageVariants } from './containers/Pagevariants/Pagevariants';
+import './App.scss';
 
-function App() {
+const App = () => {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <motion.div className="app">
+      <Provider store={store}>
+        <Navbar />
+      </Provider>
+    </motion.div>
   );
-}
+};
 
 export default App;
