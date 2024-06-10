@@ -17,9 +17,9 @@ const App = () => {
   
   return (
     <motion.div className="app">
-      <Provider store={store}>
+      {/* <Provider store={store}> */}
         <Navbar />
-      </Provider>
+      {/* </Provider> */}
     </motion.div>
   );
 };
