@@ -22,7 +22,7 @@ const Navbar = () => {
     <div>
       <nav className={fix ? 'navbar fixed' : 'navbar'}>
         <div className="app__navbar-logo">
-          <img src={images.clog3} alt="App Logo" />
+          {/* <img src={images.clog3} alt="App Logo" /> */}
         </div>
 
         <ul className="app__navbar-links">

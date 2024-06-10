@@ -20,7 +20,7 @@
       width: 140px;
       height: 40px;
 
-      @media screen and(min-width: 2000px) {
+      @media screen and (min-width: 2000px) {
         width: 180px;
         height: 40px;
       }
@@ -65,7 +65,7 @@
       }
     }
 
-    @media screen and(max-width: 850px) {
+    @media screen and (max-width: 850px) {
       display: none;
     }
   }
@@ -90,7 +90,7 @@
       width: 140px;
       height: 40px;
 
-      @media screen and(min-width: 2000px) {
+      @media screen and (min-width: 2000px) {
         width: 180px;
         height: 40px;
       }
@@ -139,7 +139,7 @@
       }
     }
 
-    @media screen and(max-width: 850px) {
+    @media screen and (max-width: 850px) {
       display: none;
     }
   }
@@ -177,8 +177,8 @@
     align-items: flex-end;
     flex-direction: column;
 
-    background: url(../../assets/bgWhite.png);
-    background-color: var(--white-color);
+    // background: url(../../assets/bgWhite.png);
+    // background-color: var(--white-color);
     background-size: cover;
     background-repeat: repeat;
     box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
