@@ -1,0 +1,2 @@
+export const FETCH_BOOKS_DATA = 'FETCH_BOOKS_DATA';
+export const SEARCH_BOOKS_DATA = 'SEARCH_BOOKS_DATA';
