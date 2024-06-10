@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import { Link } from 'react-scroll';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { motion } from 'framer-motion';
-// import { images } from '../../constants';
+import { images } from '../../constants';
 import './Navbar.scss';
 
 const Navbar = () => {
@@ -22,15 +22,14 @@ const Navbar = () => {
     <div>
       <nav className={fix ? 'navbar fixed' : 'navbar'}>
         <div className="app__navbar-logo">
-          {/* <img src={images.clog3} alt="App Logo" /> */}
+          <img src={images.logo} alt="App Logo" />
         </div>
 
         <ul className="app__navbar-links">
-          {['home', 'about', 'projects', 'testimonials', 'contacts'].map((item) => (
+          {['Discover Ello', 'Parent Resources'].map((item) => (
             <li key={`link-${item}`} className="app__flex">
               <div />
               <a href={`#${item}`}>{item}</a>
-              {/* <Link to={item} smooth={true} offset={50} duration={100}>{item}</Link> */}
             </li>
           ))}
         </ul>
@@ -45,7 +44,7 @@ const Navbar = () => {
             >
               <HiX onClick={() => setToggle(false)} />
               <ul>
-                {['home', 'about', 'projects', 'skills', 'testimonials', 'contacts'].map((item) => (
+                {['Discover Ello', 'Parent Resources'].map((item) => (
                   <li key={item}>
                     <a
                       href={`#${item}`}

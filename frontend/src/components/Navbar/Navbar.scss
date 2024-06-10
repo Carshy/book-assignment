@@ -83,7 +83,7 @@
     justify-content: flex-start;
     align-items: center;
     padding: 0.4em;
-    border: 1px solid rgb(234, 92, 0);
+    // border: 1px solid rgb(234, 92, 0);
     border-radius: 14px;
 
     img {
@@ -125,7 +125,7 @@
         transition: all 0.4s ease-in-out;
 
         &:hover {
-          color: rgb(234, 92, 0);
+          color: #5acccc;
           transform: scale(1.2);
         }
       }
