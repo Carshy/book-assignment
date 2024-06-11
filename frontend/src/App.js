@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Provider } from 'react-redux';
 import { Navbar } from './components';
-import { Home } from './containers';
+import { Home, BooksData } from './containers';
 import './App.scss';
 import store from './redux/configureStore';
 
@@ -12,6 +12,7 @@ const App = () => {
       <Provider store={store}>
         <Navbar />
         <Home />
+        <BooksData />
       </Provider>
     </motion.div>
   );
