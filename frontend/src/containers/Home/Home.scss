@@ -1,0 +1,42 @@
+.app__home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .app__home-upper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8rem;
+    width: 66%;
+
+    img {
+      width: 17em;
+      //   height: 17em;
+      //   border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .app__home-header {
+      padding: 1rem 0 1.8rem 0;
+      color: #335c6e;
+      font-weight: 600;
+      line-height: 1.5;
+      color: rgb(51, 92, 110);
+      font-size: 1.625rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    p {
+      line-height: 1.5;
+      color: rgb(44, 50, 50);
+      font-weight: 400;
+      font-size: 1.4rem;
+      text-align: center;
+      padding-bottom: 1.3rem;
+    }
+  }
+}
