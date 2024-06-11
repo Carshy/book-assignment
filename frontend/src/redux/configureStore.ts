@@ -5,6 +5,8 @@ const rootReducer = combineReducers({
   fetchBooks: fetchBookReducer,
 });
 
+export type RootState = ReturnType<typeof rootReducer>;
+
 const store = configureStore({
   reducer: rootReducer,
 });

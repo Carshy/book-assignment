@@ -1,20 +1,19 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Provider } from 'react-redux';
 import { Navbar } from './components';
-import { Home, BooksData } from './containers';
+import { Home, Books } from './containers';
 import './App.scss';
 import store from './redux/configureStore';
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <motion.div className="app">
+    <div className="app">
       <Provider store={store}>
         <Navbar />
         <Home />
-        <BooksData />
+        <Books />
       </Provider>
-    </motion.div>
+    </div>
   );
 };
 

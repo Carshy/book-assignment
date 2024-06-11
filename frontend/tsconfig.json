@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "lib": ["dom", "es6"],
+      "allowJs": true,
+      "jsx": "react",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "noImplicitAny": false,
+      "baseUrl": "src",
+      "paths": {
+        "@components/*": ["components/*"],
+        "@containers/*": ["containers/*"],
+        "@redux/*": ["redux/*"],
+        "@client/*": ["client/*"]
+      }
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"]
+  }
+  
