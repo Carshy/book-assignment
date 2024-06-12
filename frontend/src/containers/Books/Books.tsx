@@ -20,7 +20,7 @@ const Books: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '3rem' }}>
       <Typography variant="h4" align="center" gutterBottom>
         All Books
       </Typography>
@@ -40,6 +40,7 @@ const Books: React.FC = () => {
                   component={motion.div}
                   whileHover={{ scale: 1.05 }}
                   sx={{ 
+                    cursor: 'pointer',
                     '&:hover': {
                       backgroundColor: '#cffafa',
                     },
