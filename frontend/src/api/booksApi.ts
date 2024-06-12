@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Book } from '@redux/types/types';
+import { images } from '../constants';
 
 const GRAPHQL_API_URL = 'http://localhost:4000/';
 
