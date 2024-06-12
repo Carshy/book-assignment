@@ -1,5 +1,6 @@
 import { FETCH_BOOKS_REQUEST } from "@redux/actionTypes/actionTypes";
 
+// types fetch books
 export interface Book {
     title: string;
     author: string;
