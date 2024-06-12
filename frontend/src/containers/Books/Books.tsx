@@ -14,72 +14,60 @@ const Books: React.FC = () => {
     dispatch(fetchBooksThunk());
   }, [dispatch]);
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
   };
 
   return (
-    <div style={{ padding: '3rem' }}>
+    <div style={{ padding: '20px' }}>
       <Typography variant="h4" align="center" gutterBottom>
         All Books
       </Typography>
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={containerVariants}
-      >
-        <Grid container spacing={4}>
-          {books.map((book) => {
-            // Extract the filename from the coverPhotoURL
-            const imageKey = book.coverPhotoURL.replace('assets/', '').replace('.webp', '');
-            return (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={book.title}>
-                <motion.div variants={itemVariants}>
-                  <Card
-                    component={motion.div}
-                    whileHover={{ scale: 1.05 }}
-                    sx={{ 
-                      '&:hover': {
-                        backgroundColor: '#cffafa',
-                      },
-                    }}
-                  >
-                    <CardMedia
-                      component="img"
-                      height="200"
-                      image={images[imageKey]}
-                      alt={book.title}
-                    />
-                    <CardContent>
-                      <Typography variant="h6" gutterBottom>
-                        {book.title}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                        {book.author}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary">
-                        {book.readingLevel}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </motion.div>
+      <Grid container spacing={4}>
+        {books.map((book) => {
+          // Extract the filename from the coverPhotoURL
+          const imageKey = book.coverPhotoURL.replace('assets/', '').replace('.webp', '');
+          return (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={book.title}>
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                variants={itemVariants}
+              >
+                <Card
+                  component={motion.div}
+                  whileHover={{ scale: 1.05 }}
+                  sx={{ 
+                    '&:hover': {
+                      backgroundColor: '#cffafa',
+                    },
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={images[imageKey]}
+                    alt={book.title}
+                  />
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                      {book.title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      {book.author}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      {book.readingLevel}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </Grid>
+          );
+        })}
+      </Grid>
     </div>
   );
 };
