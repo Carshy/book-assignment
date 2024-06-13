@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
+import {
+  Grid, Card, CardContent, CardMedia, Typography,
+} from '@mui/material';
 import { fetchBooksThunk } from '../../redux/thunks/fetchBooksThunk';
 import { RootState } from '../../redux/configureStore';
 import { images } from '../../constants';
-import { Grid, Card, CardContent, CardMedia, Typography } from '@mui/material';
-import { motion } from 'framer-motion';
 
 const Books: React.FC = () => {
   const dispatch = useDispatch();
@@ -21,6 +23,7 @@ const Books: React.FC = () => {
 
   return (
     <div style={{ padding: '3rem' }}>
+      {/* <SearchResults /> */}
       <Typography variant="h4" align="center" gutterBottom>
         All Books
       </Typography>
@@ -39,7 +42,7 @@ const Books: React.FC = () => {
                 <Card
                   component={motion.div}
                   whileHover={{ scale: 1.05 }}
-                  sx={{ 
+                  sx={{
                     cursor: 'pointer',
                     '&:hover': {
                       backgroundColor: '#cffafa',
