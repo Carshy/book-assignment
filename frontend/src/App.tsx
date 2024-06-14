@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Navbar } from './components';
-import { Home, Books } from './containers';
+import { Home, Books, SearchList } from './containers';
 import './App.scss';
 import store from './redux/configureStore';
 
@@ -12,6 +12,7 @@ const App: React.FC = () => {
         <Navbar />
         <Home />
         <Books />
+        <SearchList />
       </Provider>
     </div>
   );

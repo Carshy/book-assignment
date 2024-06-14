@@ -1,24 +1,13 @@
 import axios from 'axios';
 import { gql } from '@apollo/client';
 import { Book } from '@redux/types/types';
-import { images } from '../constants';
 
 const GRAPHQL_API_URL = 'http://localhost:4000/';
 
+// Query for fetching books
 const FETCH_BOOKS_QUERY = `
   query {
     books {
-      title
-      author
-      coverPhotoURL
-      readingLevel
-    }
-  }
-`;
-
-const SEARCH_BOOKS_QUERY = gql`
-  query SearchBooks($query: String!) {
-    searchBooks(query: $query) {
       title
       author
       coverPhotoURL
@@ -41,6 +30,19 @@ export const fetchBooks = async (): Promise<Book[]> => {
     throw error;
   }
 };
+
+// Query for searching books
+
+export const SEARCH_BOOKS_QUERY = `
+  query SearchBooks($query: String!) {
+    searchBooks(query: $query) {
+      title
+      author
+      coverPhotoURL
+      readingLevel
+    }
+  }
+`;
 
 export const searchBooks = async (query: string): Promise<Book[]> => {
   try {

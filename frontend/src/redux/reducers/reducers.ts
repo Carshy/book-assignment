@@ -1,9 +1,7 @@
-import { FETCH_BOOKS_REQUEST, SEARCH_BOOKS_REQUEST, SEARCH_BOOKS_SUCCESS, SEARCH_BOOKS_FAILURE } from '../actionTypes/actionTypes';
-// import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-// import { v4 as uuidv4 } from 'uuid';
-import { Book, BookActionTypes} from '@redux/types/types';
-// import { fetchBookSearches } from '../actions/actionCreate';
-// import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_FAILURE } from '../actionTypes/actionTypes';
+import { createSlice } from '@reduxjs/toolkit';
+import { FETCH_BOOKS_REQUEST } from '../actionTypes/actionTypes';
+import { searchBooks } from '../actions/actionCreate';
+import { Book, BookActionTypes, BookState} from '@redux/types/types';
 
 const initialState1: Book[] = [];
 
@@ -17,42 +15,43 @@ const fetchBookReducer = (state = initialState1, action: BookActionTypes): Book[
   }
 };
 
-// **********Book searching reducer*******************
-interface BookState {
-  books: Book[];
-  loading: boolean;
-  error: string | null;
-}
-
+// ******************Book Searching reducer******************
 const initialState: BookState = {
   books: [],
   loading: false,
   error: null,
 };
 
-const searchBookReducer = (state = initialState, action: any): BookState => {
-  switch (action.type) {
-    case SEARCH_BOOKS_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      };
-    case SEARCH_BOOKS_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        books: action.payload,
-      };
-    case SEARCH_BOOKS_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-    default:
-      return state;
-  }
-};
+const bookSlice = createSlice({
+  name: 'books',
+  initialState,
+  reducers: {
+    clearBookList(state) {
+      state.books = [];
+    },
+    updateBooksLoaded(state, action) {
+      // Implement your logic to update the number of books loaded
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(searchBooks.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(searchBooks.fulfilled, (state, action) => {
+        state.loading = false;
+        state.books = action.payload;
+      })
+      .addCase(searchBooks.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      });
+  },
+});
 
-export { fetchBookReducer, searchBookReducer };
+export const { clearBookList, updateBooksLoaded } = bookSlice.actions;
+
+export default bookSlice.reducer;
+
+export { fetchBookReducer };

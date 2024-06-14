@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 import { images } from '../../constants';
+import { Search } from '../../containers';
 import './Navbar.scss';
 
 const Navbar = () => {
@@ -23,6 +24,10 @@ const Navbar = () => {
       <nav className={fix ? 'navbar fixed' : 'navbar'}>
         <div className="app__navbar-logo">
           <img src={images.logo} alt="App Logo" />
+        </div>
+
+        <div>
+          <Search />
         </div>
 
         <ul className="app__navbar-links">
