@@ -9,27 +9,7 @@ export const fetchBookRequest = (books: Book[]): FetchBooksRequestAction => ({
   payload: books,
 });
 
-// **********Action creator for Searching Books*****************
-// export const searchBooksRequest = (query: string) => ({
-//   type: SEARCH_BOOKS_REQUEST,
-//   payload: query,
-// });
-
-// export const searchBooksSuccess = (books: Book[]) => ({
-//   type: SEARCH_BOOKS_SUCCESS,
-//   payload: books,
-// });
-
-// export const searchBooksFailure = (error: string) => ({
-//   type: SEARCH_BOOKS_FAILURE,
-//   payload: error,
-// });
-
-// src/redux/actions/bookActions.ts
-
-// import axios from 'axios';
-// import { Book } from '../types';
-
+// ****************Action creator for Searching Books**************
 const GRAPHQL_API_URL = 'http://localhost:4000/';
 
 const SEARCH_BOOKS_QUERY = `
