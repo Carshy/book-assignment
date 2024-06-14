@@ -1,9 +1,10 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import { fetchBookReducer, searchBookReducer } from './reducers/reducers';
+import { fetchBookReducer } from './reducers/reducers';
+import bookReducer from '../redux/reducers/searchBooksReducer';
 
 const rootReducer = combineReducers({
   fetchBooks: fetchBookReducer,
-  searchBooks: searchBookReducer,
+  searchBooks: bookReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
