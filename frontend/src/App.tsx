@@ -11,8 +11,8 @@ const App: React.FC = () => {
       <Provider store={store}>
         <Navbar />
         <Home />
-        <Books />
         <SearchList />
+        <Books />
       </Provider>
     </div>
   );

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 import { images } from '../../constants';
-import { Search } from '../../containers';
+// import { SearchList } from '../../containers';
 import './Navbar.scss';
 
 const Navbar = () => {
@@ -26,9 +26,9 @@ const Navbar = () => {
           <img src={images.logo} alt="App Logo" />
         </div>
 
-        <div>
-          <Search />
-        </div>
+        {/* <div>
+          <SearchList />
+        </div> */}
 
         <ul className="app__navbar-links">
           {['Discover Ello', 'Parent Resources'].map((item) => (

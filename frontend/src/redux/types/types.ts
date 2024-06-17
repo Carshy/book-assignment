@@ -1,5 +1,5 @@
 import { FETCH_BOOKS_REQUEST, SEARCH_BOOKS_REQUEST, SEARCH_BOOKS_SUCCESS, SEARCH_BOOKS_FAILURE, CLEAR_BOOK_LIST, UPDATE_BOOKS_LOADED } from "@redux/actionTypes/actionTypes";
-
+// import { FETCH_BOOKS_REQUEST, SEARCH_BOOKS_REQUEST } from "@redux/actionTypes/actionTypes";
 // Types fetch books
 export interface Book {
   title: string;
@@ -19,20 +19,21 @@ export interface FetchBooksRequestAction {
   payload: Book[];
 }
 
-// Types for searching books
 export interface SearchBooksRequestAction {
   type: typeof SEARCH_BOOKS_REQUEST;
+  payload: Book[];
 }
 
-// export interface SearchBooksSuccessAction {
-//   type: typeof SEARCH_BOOKS_SUCCESS;
-//   payload: Book[];
-// }
 
-// export interface SearchBooksFailureAction {
-//   type: typeof SEARCH_BOOKS_FAILURE;
-//   payload: string;
-// }
+export interface SearchBooksSuccessAction {
+  type: typeof SEARCH_BOOKS_SUCCESS;
+  payload: Book[];
+}
+
+export interface SearchBooksFailureAction {
+  type: typeof SEARCH_BOOKS_FAILURE;
+  payload: string;
+}
 
 export interface ClearBookListAction {
   type: typeof CLEAR_BOOK_LIST;
@@ -45,7 +46,7 @@ export interface UpdateBooksLoadedAction {
 
 export type FetchState = 'pending' | 'fulfilled';
 
-export type BookActionTypes = FetchBooksRequestAction | SearchBooksRequestAction
+export type BookActionTypes = FetchBooksRequestAction
 | ClearBookListAction
 | UpdateBooksLoadedAction;
   

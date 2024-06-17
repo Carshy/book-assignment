@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { gql } from '@apollo/client';
 import { Book } from '@redux/types/types';
 
 const GRAPHQL_API_URL = 'http://localhost:4000/';
@@ -31,31 +30,64 @@ export const fetchBooks = async (): Promise<Book[]> => {
   }
 };
 
-// Query for searching books
+// ********************************************************************
+// const GRAPHQL_API_URL = 'http://localhost:4000/';
 
-export const SEARCH_BOOKS_QUERY = `
-  query SearchBooks($query: String!) {
-    searchBooks(query: $query) {
-      title
-      author
-      coverPhotoURL
-      readingLevel
-    }
-  }
-`;
+// interface SearchBooksResponse {
+//   searchBooks: Book[];
+// }
 
-export const searchBooks = async (query: string): Promise<Book[]> => {
-  try {
-    const response = await axios.post(GRAPHQL_API_URL, {
-      query: SEARCH_BOOKS_QUERY,
-      variables: { query },
-    });
-    if (response.data.errors) {
-      throw new Error(response.data.errors.map((error: any) => error.message).join(', '));
-    }
-    return response.data.data.searchBooks;
-  } catch (error) {
-    console.error('Error searching books:', error);
-    throw error;
-  }
-};
+// const searchBooksQuery = `
+//   query SearchBooks($query: String!) {
+//     searchBooks(query: $query) {
+//       title
+//       author
+//       coverPhotoURL
+//       readingLevel
+//     }
+//   }
+// `;
+
+// export const searchBooks = async (): Promise<Book[]> => {
+//   try {
+//     const response = await axios.post(GRAPHQL_API_URL, {
+//       query: searchBooksQuery,
+//     });
+//     if (response.data.errors) {
+//       throw new Error(response.data.errors.map((error: any) => error.message).join(', '));
+//     }
+//     return response.data.data.searchBooks;
+//   } catch (error) {
+//     console.error('Error searching books:', error);
+//     throw error;
+//   }
+// };
+
+// export const searchBooks = createAsyncThunk(
+//   'books/searchBooks',
+//   async (query: string, { rejectWithValue }) => {
+//     try {
+//       const response = await axios.post<SearchBooksResponse>(
+//         GRAPHQL_API_URL,
+//         {
+//           query: searchBooksQuery,
+//           variables: { query },
+//         },
+//         {
+//           headers: {
+//             'Content-Type': 'application/json',
+//           },
+//         }
+//       );
+
+//       if (response.data.errors) {
+//         throw new Error(response.data.errors.map((error) => error.message).join(', '));
+//       }
+
+//       return response.data.data.searchBooks;
+//     } catch (error) {
+//       console.error('GraphQL request failed:', error);
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );

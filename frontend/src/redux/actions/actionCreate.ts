@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { FETCH_BOOKS_REQUEST, SEARCH_BOOKS_REQUEST, SEARCH_BOOKS_SUCCESS, SEARCH_BOOKS_FAILURE } from '../actionTypes/actionTypes';
+import { FETCH_BOOKS_REQUEST } from '../actionTypes/actionTypes';
 import { FetchBooksRequestAction, Book } from '@redux/types/types';
 
 // Action creator for Fetching Books
@@ -9,10 +9,15 @@ export const fetchBookRequest = (books: Book[]): FetchBooksRequestAction => ({
   payload: books,
 });
 
-// ****************Action creator for Searching Books**************
+// ****************Action creator for Searching Books*************
+
 const GRAPHQL_API_URL = 'http://localhost:4000/';
 
-const SEARCH_BOOKS_QUERY = `
+interface SearchBooksResponse {
+  searchBooks: Book[];
+}
+
+const searchBooksQuery = `
   query SearchBooks($query: String!) {
     searchBooks(query: $query) {
       title
@@ -27,17 +32,27 @@ export const searchBooks = createAsyncThunk(
   'books/searchBooks',
   async (query: string, { rejectWithValue }) => {
     try {
-      const response = await axios.post(GRAPHQL_API_URL, {
-        query: SEARCH_BOOKS_QUERY,
-        variables: { query },
-      });
+      const response = await axios.post<SearchBooksResponse>(
+        GRAPHQL_API_URL,
+        {
+          query: searchBooksQuery,
+          variables: { query },
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
       if (response.data.errors) {
-        throw new Error(response.data.errors.map((error: any) => error.message).join(', '));
+        throw new Error(response.data.errors.map((error) => error.message).join(', '));
       }
+
       return response.data.data.searchBooks;
     } catch (error) {
+      console.error('GraphQL request failed:', error);
       return rejectWithValue(error.message);
     }
   }
 );
-

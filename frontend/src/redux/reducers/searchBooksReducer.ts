@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { searchBooks } from '../actions/actionCreate';
-import { BookState} from '@redux/types/types';
+import { BookState } from '@redux/types/types';
 
 // ******************Book Searching reducer******************
 const initialState: BookState = {
@@ -8,7 +8,8 @@ const initialState: BookState = {
     loading: false,
     error: null,
   };
-  
+
+
   const bookSlice = createSlice({
     name: 'books',
     initialState,
