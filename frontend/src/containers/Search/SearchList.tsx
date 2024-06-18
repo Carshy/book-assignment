@@ -7,8 +7,6 @@ import { RootState } from '../../redux/configureStore';
 import { formatString } from '../Utils/Utils';
 import { clearBookList, updateBooksLoaded } from '../../redux/reducers/searchBooksReducer';
 
-// export default SearchList;
-
 const SearchList: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [currentPage, setCurrentPage] = useState('none');

@@ -13,10 +13,6 @@ export const fetchBookRequest = (books: Book[]): FetchBooksRequestAction => ({
 
 const GRAPHQL_API_URL = 'http://localhost:4000/';
 
-interface SearchBooksResponse {
-  searchBooks: Book[];
-}
-
 const searchBooksQuery = `
   query SearchBooks($query: String!) {
     searchBooks(query: $query) {
@@ -27,6 +23,13 @@ const searchBooksQuery = `
     }
   }
 `;
+
+interface SearchBooksResponse {
+  data: {
+    searchBooks: Book[];
+  };
+  errors?: { message: string }[];
+}
 
 export const searchBooks = createAsyncThunk(
   'books/searchBooks',
