@@ -24,20 +24,59 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Ello Assignment App</title>
+    <style>
+      .container {
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-color: #5acccc;
+        z-index: 1000;
+        transition: opacity 800ms ease 0s;
+      }
+
+      .loading {
+        position: relative;
+        width: 150px;
+        height: 56px;
+        overflow: hidden;
+      }
+
+      .loading::before {
+        content: 'aaaaaaaa';
+        position: absolute;
+        top: -46px;
+        left: 0;
+        color: transparent;
+        font-size: 4em;
+        text-decoration-style: wavy;
+        text-decoration-color: #fff;
+        text-decoration-line: underline;
+        animation: animate 0.7s linear infinite;
+      }
+
+      @keyframes animate {
+        0% {
+          transform: translateX(-1px);
+        }
+        100% {
+          transform: translateX(-55px);
+        }
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="spinner" class="container">
+      <div class="loading"></div>
+    </div>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
