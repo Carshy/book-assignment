@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { Navbar } from './components';
-import { Home, Books, SearchList } from './containers';
+import { Home, SearchList } from './containers';
 import './App.scss';
 import store from './redux/configureStore';
 
@@ -16,7 +16,8 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/books" element={<SearchList />} />
-            <Route path="/books/:book" element={<Books />} />
+            {/* <Route path="/books/:bookId" element={<ShowBook />} /> */}
+            {/* <Route path="/books/:book" element={<Books />} /> */}
           </Routes>
         </div>
       </Router>

@@ -10,9 +10,21 @@ const Navbar = () => {
   const [navActive, setNavActive] = useState<boolean>(false);
   const navigate = useNavigate();
 
+  const [fix, setFix] = useState(false);
+
+  const navScroll = () => {
+    if (window.scrollY >= 100) {
+      setFix(true);
+    } else {
+      setFix(false);
+    }
+  };
+
+  window.addEventListener('scroll', navScroll);
+
   return (
     <div>
-      <nav className="nav__container">
+      <nav className={fix ? 'nav__container fixed' : 'nav__container'}>
         <div className="app__navbar-logo">
           <img src={images.logo} alt="App Logo" />
         </div>

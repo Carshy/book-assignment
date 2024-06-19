@@ -240,7 +240,8 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   position: fixed;
-  z-index: 1000;
+  z-index: 3;
+  background: transparent;
 
   // position: sticky;
   top: 0px;
@@ -298,4 +299,14 @@
       }
     }
   }
+}
+
+.nav__container.fixed {
+  // background: #333;
+  // background-color: #15023a;
+  background: #fff;
+  // backdrop-filter: blur(4px);
+  transition: all 0.7s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 3;
 }
