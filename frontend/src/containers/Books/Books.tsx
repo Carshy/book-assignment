@@ -185,7 +185,7 @@ const Books: React.FC = () => {
                       {book.author}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" sx={{ color: '#fff' }}>
-                      {book.readingLevel}
+                      Reading Level: {book.readingLevel}
                     </Typography>
                   </CardContent>
                 </Card>
