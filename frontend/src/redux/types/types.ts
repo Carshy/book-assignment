@@ -2,6 +2,7 @@ import { FETCH_BOOKS_REQUEST, SEARCH_BOOKS_REQUEST, SEARCH_BOOKS_SUCCESS, SEARCH
 // import { FETCH_BOOKS_REQUEST, SEARCH_BOOKS_REQUEST } from "@redux/actionTypes/actionTypes";
 // Types fetch books
 export interface Book {
+  id: string
   title: string;
   author: string;
   coverPhotoURL: string;

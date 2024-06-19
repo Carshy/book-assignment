@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { images } from '../../constants';
+import { Books } from '..';
 import './Home.scss';
 
 const StyledButton = styled(Button)({
@@ -40,6 +41,7 @@ const Home = () => {
           Explore Reading Sets
         </StyledButton>
       </div>
+      <Books />
     </div>
   );
 };
