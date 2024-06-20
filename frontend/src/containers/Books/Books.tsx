@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import {
   Grid, Card, CardContent, CardMedia, Typography,
 } from '@mui/material';
-import { fetchBooksThunk } from '../../redux/thunks/fetchBooksThunk';
 import { RootState } from '../../redux/configureStore';
+import { fetchBooksThunk } from '../../redux/thunks/fetchBooksThunk';
+import ShowBook from './ShowBook';
 import { images } from '../../constants';
+// import { v4 as uuidv4 } from 'uuid';
 
 const Books: React.FC = () => {
   const dispatch = useDispatch();
+  const [selectedBook, setSelectedBook] = useState<string | null>(null);
   const books = useSelector((state: RootState) => state.fetchBooks);
 
   useEffect(() => {
@@ -21,18 +24,20 @@ const Books: React.FC = () => {
     show: { opacity: 1, y: 0 },
   };
 
+  const handleBookClick = (bookId: string) => {
+    setSelectedBook(bookId);
+  };
+
   return (
-    <div style={{ padding: '3rem' }}>
-      {/* <SearchResults /> */}
+    <div style={{ padding: '1rem' }} id="books-section">
       <Typography variant="h4" align="center" gutterBottom>
         All Books
       </Typography>
-      <Grid container spacing={4}>
+      <Grid container spacing={3} justifyContent="center">
         {books.map((book) => {
-          // Extract the filename from the coverPhotoURL
           const imageKey = book.coverPhotoURL.replace('assets/', '').replace('.webp', '');
           return (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={book.title}>
+            <Grid item key={book.id}>
               <motion.div
                 initial="hidden"
                 whileInView="show"
@@ -43,27 +48,72 @@ const Books: React.FC = () => {
                   component={motion.div}
                   whileHover={{ scale: 1.05 }}
                   sx={{
+                    position: 'relative',
+                    overflow: 'hidden',
+                    width: '14rem',
+                    height: '18rem',
+                    border: '1px solid #ccc',
+                    borderRadius: '10px',
+                    backgroundColor: '#fff',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                    transition: 'all 0.3s ease-in-out',
                     cursor: 'pointer',
                     '&:hover': {
                       backgroundColor: '#cffafa',
                     },
                   }}
+                  onClick={() => handleBookClick(book.id)}
                 >
                   <CardMedia
                     component="img"
                     height="200"
                     image={images[imageKey]}
                     alt={book.title}
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'transform 0.6s ease-in-out',
+                      '&:hover': {
+                        transform: 'scale(1.1)',
+                      },
+                    }}
                   />
-                  <CardContent>
-                    <Typography variant="h6" gutterBottom>
+                  <CardContent
+                    component={motion.div}
+                    whileInView={{ opacity: [0, 1], scale: [0, 1] }}
+                    transition={{
+                      duration: 0.4,
+                      ease: 'easeInOut',
+                      staggerChildren: 0.45,
+                    }}
+                    sx={{
+                      padding: '10px',
+                      textAlign: 'center',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      width: '100%',
+                      height: '100%',
+                      backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                      borderRadius: '0.5rem',
+                      opacity: 0,
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        opacity: 1,
+                      },
+                    }}
+                  >
+                    <Typography variant="h6" gutterBottom sx={{ color: '#f76434' }}>
                       {book.title}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary">
+                    <Typography variant="body2" color="textSecondary" sx={{ color: '#fff' }}>
                       {book.author}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      {book.readingLevel}
+                    <Typography variant="body2" color="textSecondary" sx={{ color: '#fff' }}>
+                      Reading Level: {book.readingLevel}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -72,8 +122,12 @@ const Books: React.FC = () => {
           );
         })}
       </Grid>
+      {selectedBook && (
+        <ShowBook bookId={selectedBook} onClose={() => setSelectedBook(null)} />
+      )}
     </div>
   );
 };
 
 export default Books;
+
