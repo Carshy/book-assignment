@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 import { images } from '../../constants';
-import { NavLink, useNavigate } from "react-router-dom";
 import './Navbar.scss';
 
 const Navbar = () => {
-  const navigate = useNavigate();
-
   const [toggle, setToggle] = useState(false);
   const [fix, setFix] = useState(false);
+  const [navActive, setNavActive] = useState(false);
 
   const navScroll = () => {
     if (window.scrollY >= 60) {
@@ -46,10 +45,10 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
-        
+
         <div className="app__navbar-menu">
           <HiMenuAlt4 onClick={() => setToggle(true)} />
-          
+
           {toggle && (
             <motion.div
               className="toggle-menu"

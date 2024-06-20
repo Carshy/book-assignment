@@ -18,7 +18,8 @@
         padding: 0.5em 1em;
         margin-bottom: 1.5em;
         background: transparent;
-        box-shadow: 0 0 0.75em #fff !important;
+        // box-shadow: 0 0 0.75em #fff !important;
+        border: 1px solid #fff !important;
         border-radius: 1em;
         border: none;
         outline: none;
@@ -29,13 +30,13 @@
         }
 
         &::placeholder {
-          color: #f76434;
+          color: #fff;
         }
         &:-ms-input-placeholder {
-          color: #f76434;
+          color: #fff;
         }
         &::-webkit-input-placeholder {
-          color: #f76434;
+          color: #fff;
         }
       }
     }
