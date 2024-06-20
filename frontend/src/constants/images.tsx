@@ -1,4 +1,5 @@
-import logo from '../assets/logo.jpg';
+// import logo from '../assets/logo.jpg';
+import logo from '../assets/logo1.png';
 import home2 from '../assets/home2.jpg';
 import image1 from '../assets/image1.webp';
 import image2 from '../assets/image2.webp';
