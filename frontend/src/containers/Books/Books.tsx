@@ -6,7 +6,6 @@ import {
 } from '@mui/material';
 import { RootState } from '../../redux/configureStore';
 import { fetchBooksThunk } from '../../redux/thunks/fetchBooksThunk';
-import ShowBook from './ShowBook';
 import { images } from '../../constants';
 // import { v4 as uuidv4 } from 'uuid';
 
@@ -122,9 +121,6 @@ const Books: React.FC = () => {
           );
         })}
       </Grid>
-      {selectedBook && (
-        <ShowBook bookId={selectedBook} onClose={() => setSelectedBook(null)} />
-      )}
     </div>
   );
 };

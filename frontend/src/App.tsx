@@ -26,8 +26,6 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/books" element={<SearchList />} />
-              {/* <Route path="/books/:bookId" element={<ShowBook />} /> */}
-              {/* <Route path="/books/:book" element={<Books />} /> */}
             </Routes>
           </div>
         </Router>
