@@ -154,7 +154,7 @@ const Books: React.FC = () => {
   };
 
   return (
-    <div style={{ padding: '1rem' }}>
+    <div style={{ padding: '1rem' }} id="books-section">
       <Typography variant="h4" align="center" gutterBottom>
         All Books
       </Typography>
