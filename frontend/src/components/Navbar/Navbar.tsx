@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-// import { HiMenuAlt4, HiX } from 'react-icons/hi';
-// import { motion } from 'framer-motion';
+import { HiMenuAlt4, HiX } from 'react-icons/hi';
+import { motion } from 'framer-motion';
 import { images } from '../../constants';
 import { NavLink, useNavigate } from "react-router-dom";
 import './Navbar.scss';
 
 const Navbar = () => {
-
-  const [navActive, setNavActive] = useState<boolean>(false);
   const navigate = useNavigate();
 
+  const [toggle, setToggle] = useState(false);
   const [fix, setFix] = useState(false);
 
   const navScroll = () => {
@@ -29,7 +28,7 @@ const Navbar = () => {
           <img src={images.logo} alt="App Logo" />
         </div>
 
-        <ul className="nav__links">
+        <ul className="app__navbar-links">
           <li>
             <NavLink
               to="/"
@@ -38,14 +37,6 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-          {/* <li>
-            <NavLink
-              to="/"
-              onClick={() => setNavActive(false)}
-            >
-              Book Resources
-            </NavLink>
-          </li> */}
           <li>
             <NavLink
               to="/books"
@@ -55,6 +46,38 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
+        
+        <div className="app__navbar-menu">
+          <HiMenuAlt4 onClick={() => setToggle(true)} />
+          
+          {toggle && (
+            <motion.div
+              className="toggle-menu"
+              whileInView={{ x: [300, 0] }}
+              transition={{ duration: 0.85, ease: 'easeOut' }}
+            >
+              <HiX onClick={() => setToggle(false)} />
+              <ul className="nav__links">
+                <li>
+                  <NavLink
+                    to="/"
+                    onClick={() => setToggle(false)}
+                  >
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/books"
+                    onClick={() => setToggle(false)}
+                  >
+                    Search for Books
+                  </NavLink>
+                </li>
+              </ul>
+            </motion.div>
+          )}
+        </div>
       </nav>
     </div>
   );
