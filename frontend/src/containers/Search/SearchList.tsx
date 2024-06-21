@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { motion } from 'framer-motion';
 import { searchBooks } from '../../redux/actions/actionCreate';
-import { RootState } from '../../redux/configureStore';
+import { AppDispatch, RootState } from '../../redux/configureStore';
 import { Book } from '../../redux/types/types';
 import { images } from '../../constants';
 import './SearchList.scss';
@@ -12,7 +12,7 @@ const SearchList: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedBooks, setSelectedBooks] = useState<Book>([]);
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const searchBooksState = useSelector((state: RootState) => state.searches);
 
   useEffect(() => {

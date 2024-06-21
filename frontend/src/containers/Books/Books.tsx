@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import {
   Grid, Card, CardContent, CardMedia, Typography,
 } from '@mui/material';
-import { RootState } from '../../redux/configureStore';
+import { AppDispatch } from '../../redux/configureStore';
 import { fetchBooksThunk } from '../../redux/thunks/fetchBooksThunk';
 import { images } from '../../constants';
 // import { v4 as uuidv4 } from 'uuid';
 
 const Books: React.FC = () => {
-  const dispatch = useDispatch();
-  const [selectedBook, setSelectedBook] = useState<string | null>(null);
-  const books = useSelector((state: RootState) => state.fetchBooks);
+  const dispatch = useDispatch<AppDispatch>();
+  const books = useSelector((state: any) => state.fetchBooks);
 
   useEffect(() => {
     dispatch(fetchBooksThunk());
@@ -21,10 +20,6 @@ const Books: React.FC = () => {
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
-  };
-
-  const handleBookClick = (bookId: string) => {
-    setSelectedBook(bookId);
   };
 
   return (
@@ -61,7 +56,6 @@ const Books: React.FC = () => {
                       backgroundColor: '#cffafa',
                     },
                   }}
-                  onClick={() => handleBookClick(book.id)}
                 >
                   <CardMedia
                     component="img"
@@ -112,7 +106,8 @@ const Books: React.FC = () => {
                       {book.author}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" sx={{ color: '#fff' }}>
-                      Reading Level: {book.readingLevel}
+                      Reading Level:
+                      {book.readingLevel}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -126,4 +121,3 @@ const Books: React.FC = () => {
 };
 
 export default Books;
-
