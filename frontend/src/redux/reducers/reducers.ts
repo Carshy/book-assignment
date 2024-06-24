@@ -1,5 +1,5 @@
-import { FETCH_BOOKS_REQUEST } from '../actionTypes/actionTypes';
 import { Book, BookActionTypes } from '@redux/types/types';
+import { FETCH_BOOKS_REQUEST } from '../actionTypes/actionTypes';
 
 const initialState1: Book[] = [];
 

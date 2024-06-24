@@ -20,10 +20,23 @@ const StyledButton = styled(Button)({
   },
 });
 
+const StyledPara = styled('p')({
+  width: '50%',
+  margin: '0 auto',
+  textAlign: 'center',
+  fontSize: '1rem',
+  lineHeight: 1.5,
+});
+
 const Home = () => {
-  const handleButtonClick = (event) => {
+  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    document.getElementById('books-section').scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById('books-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.error("Element with ID 'books-section' not found.");
+    }
   };
   const read = "Ignite Your Child's Love for Reading!";
   const para = "Discover over 700 expertly crafted, books designed to match your child's reading level. Cultivate a passion for reading—no frustration, just pure joy!";
@@ -32,9 +45,9 @@ const Home = () => {
       <div className="app__home-upper">
         <img src={images.home2} alt="Home" />
         <p className="app__home-header">{ read }</p>
-        <p>{ para }</p>
+        <StyledPara>{ para }</StyledPara>
         <StyledButton
-          component="a"
+          // component="a"
           href="#books-section"
           onClick={handleButtonClick}
         >
